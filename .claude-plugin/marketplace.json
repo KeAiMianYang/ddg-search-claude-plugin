@@ -1,0 +1,14 @@
+{
+  "name": "ddg-search",
+  "owner": {
+    "name": "Hugo Dupuy-Roudel",
+    "email": "DaMianYang@outlook.fr"
+  },
+  "plugins": [
+    {
+      "name": "ddg-search",
+      "source": "./plugins/ddg-search",
+      "description": "DuckDuckGo web search with proxy support and domain blocklist"
+    }
+  ]
+}

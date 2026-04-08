@@ -1,0 +1,16 @@
+{
+  "description": "Redirects WebSearch calls to the ddg-search MCP tool",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "WebSearch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'BLOCKED: Use mcp__plugin_ddg-search_ddg-search__web_search instead of WebSearch.' >&2; exit 2"
+          }
+        ]
+      }
+    ]
+  }
+}

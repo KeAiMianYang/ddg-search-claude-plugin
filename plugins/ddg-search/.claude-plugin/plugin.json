@@ -1,0 +1,8 @@
+{
+  "name": "ddg-search",
+  "description": "DuckDuckGo web search MCP server with proxy support and domain blocklist",
+  "version": "0.3.2",
+  "author": {
+    "name": "Hugo Dupuy-Roudel"
+  }
+}

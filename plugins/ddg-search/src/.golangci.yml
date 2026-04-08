@@ -1,0 +1,79 @@
+version: "2"
+
+linters:
+  default: none
+  enable:
+    # Correctness — catch real bugs
+    - errcheck          # unchecked errors
+    - govet             # go vet checks (printf mismatches, struct tags, etc.)
+    - staticcheck       # the big one: deprecated APIs, impossible conditions, etc.
+    - ineffassign       # unused assignments
+    - unused            # unused code
+    - bodyclose         # unclosed HTTP response bodies
+    - nilerr            # returning nil error after checking err != nil
+    - nilnesserr        # similar nil-error mistakes
+    - contextcheck      # misuse of context
+    - noctx             # HTTP requests without context
+    - reassign          # reassignment of function parameters
+    - sqlclosecheck     # unclosed SQL rows
+    - wastedassign      # assignments that are never read
+    - makezero          # slice append after make with non-zero length
+    - durationcheck     # bad time.Duration arithmetic
+    - copyloopvar       # loop variable capture bugs (Go <1.22)
+    - fatcontext        # context misuse in loops
+    - iotamixing        # iota declarations mixed with explicit values
+    - recvcheck         # receiver type consistency
+
+    # Security
+    - gosec             # security-oriented checks
+    - bidichk           # dangerous unicode bidi characters
+
+    # Error handling quality
+    - errchkjson        # unchecked JSON marshal/unmarshal errors
+    - errname           # error variable naming (ErrFoo)
+    - errorlint         # error wrapping/comparison issues
+    - nilnil            # returning nil, nil
+
+    # Style (lightweight, high-value)
+    - gocritic          # opinionated but useful (if-else chains, unnecessary conversions)
+    - unconvert         # unnecessary type conversions
+    - unparam           # unused function parameters
+    - usestdlibvars     # use stdlib constants (http.MethodPost vs "POST")
+    - mirror            # wrong argument order in copy/append
+    - asciicheck        # non-ASCII identifiers
+    - dupword           # duplicated words in comments
+    - misspell          # common misspellings
+    - predeclared       # shadowing predeclared identifiers
+    - revive            # drop-in replacement for golint
+    - goprintffuncname  # printf-style func naming
+    - modernize         # use modern Go idioms
+    - mnd               # magic numbers
+    - exhaustive        # non-exhaustive enum switches
+    - gochecksumtype    # exhaustive type switches (go-sumtype)
+    - nolintlint        # bad //nolint directives
+    - exptostd          # suggest stdlib replacements for x/ packages
+
+    # Test quality
+    - thelper           # test helper functions missing t.Helper()
+    - usetesting        # use testing package helpers
+    - testableexamples  # example functions without output comments
+
+  settings:
+    mnd:
+      ignored-numbers:
+        - "0"
+        - "1"
+        - "2"
+      ignored-functions:
+        - "strconv.Atoi"
+        - "strconv.Itoa"
+    gocritic:
+      disabled-checks:
+        - ifElseChain   # the init() config parsing is clearer as if-else
+    revive:
+      rules:
+        - name: package-comments
+          disabled: true  # not useful for package main
+    gosec:
+      excludes:
+        - G706          # log injection from env vars is acceptable here

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "ddg-search": {
+      "type": "stdio",
+      "command": "${CLAUDE_PLUGIN_ROOT}/launcher.sh",
+      "env": {
+        "BLOCKLIST": "",
+        "SEARCH_TIMEOUT": "10",
+        "SEARCH_DELAY": "2",
+        "MAX_RETRIES": "3",
+        "RETRY_DELAY": "5"
+      }
+    }
+  }
+}
